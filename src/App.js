@@ -1,13 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Header from "./components/Header"
 
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    player1: [],
+    player2: [],
+    table: [],
+    odds: {}
+  }
+
+  render() {
+    return (
+      <div>
+        <Header />
+      </div>
+    );
+  }
+  
 }
 
 export default App;
