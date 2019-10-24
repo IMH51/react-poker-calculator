@@ -7,3 +7,22 @@ body {
   font-family: 'Lato', sans-serif;
   text-align: center
 }
+
+.communal-container {
+  position: relative;
+  display: block;
+  border: 0.2rem solid;
+  border-radius: 1rem;
+  margin: 1rem;
+  overflow: auto;
+  white-space: nowrap;
+  min-width: 80rem;
+  min-height: 8rem;
+}
+
+.small-card {
+  width: 5rem;
+  height: auto;
+  margin: 0.4rem; 
+  cursor: pointer;
+}
