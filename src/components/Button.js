@@ -1,11 +1,9 @@
 import React from 'react'
 
 const Button = props => {
-    const slugified = props.area.toLowerCase().replace(" ", "_")
-    const buttonClass = `${slugified} ${props.selected === props.area ? "selected-area" : ""}`
-    const buttonText = props.selected === props.area ? `Adding to ${props.area} cards` : `${props.area} cards`
+    const buttonText = props.selected === props.area ? `Adding to ${props.area} Cards` : `${props.area} Cards`
     return (
-      <button className={buttonClass} onClick={() => props.setSelected(props.areaType)}>{buttonText}</button>
+      <button onClick={() => props.setSelected(props.area)}>{buttonText}</button>
     )
 }
 

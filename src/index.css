@@ -20,6 +20,35 @@ body {
   min-height: 8rem;
 }
 
+.table-containers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.table-card-containers {
+  border: 0.2rem solid;
+  border-radius: 1rem;
+  margin: 1rem;
+  padding: 0.5rem;
+  min-height: 10.5rem;
+  min-width: 12rem;
+  padding-bottom: 0.3rem;
+}
+
+.table-card-containers:nth-child(2) {
+  min-width: 18rem;
+}
+
+.table-card-containers button {
+  font-size: 0.8rem;
+  border: 0.1rem solid;
+  border-radius: 1rem;
+  padding: 0.3rem;
+  margin: 0.3rem;
+  min-width: 12rem;
+}
+
 .small-card {
   width: 5rem;
   height: auto;

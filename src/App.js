@@ -39,14 +39,16 @@ class App extends Component {
 
   render() {
     const communalCards = this.availableCards()
-    const areas = Object.keys(this.state).slice(0,3)
+    const areas = Object.keys(this.state)
     return (
       <div>
         <Header />
         <CommunalContainer cards={communalCards} addCard={this.addCard}/>
-        <TableContainer cardsClass={areas[0]} cards={this.state["Player 1"]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
-        <TableContainer cardsClass={areas[2]} cards={this.state["Table"]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
-        <TableContainer cardsClass={areas[1]} cards={this.state["Player 2"]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
+        <div className="table-containers" >
+          <TableContainer area={areas[0]} cards={this.state["Player 1"]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
+          <TableContainer area={areas[2]} cards={this.state["Table"]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
+          <TableContainer area={areas[1]} cards={this.state["Player 2"]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
+        </div>
       </div>
     );
   }
