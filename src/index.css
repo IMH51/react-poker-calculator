@@ -8,10 +8,9 @@ body {
   text-align: center;
   justify-content: center;
   min-width: 850px;
-
 }
 
-.communal-container {
+.communal-container, .results-container {
   position: relative;
   display: block;
   border: 0.2rem solid;
@@ -23,10 +22,22 @@ body {
   min-height: 8rem;
 }
 
-.table-containers {
+.table-containers, .results-container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.results-container {
+  width: 40rem;
+  min-height: 4.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  align-content: center;
+}
+
+.odds-container {
+  justify-content: center;
 }
 
 .table-card-containers {
@@ -43,7 +54,7 @@ body {
   min-width: 18rem;
 }
 
-.table-card-containers button {
+button {
   color: white;
   font-size: 0.8rem;
   background: none;
@@ -57,7 +68,12 @@ body {
 }
 
 button.selected-button {
-  background: rgba(131, 131, 131, 0.5)
+  color: black;
+  background: white;  
+}
+
+button.disable {
+  opacity: 0.5;
 }
 
 .small-card {
@@ -65,4 +81,8 @@ button.selected-button {
   height: auto;
   margin: 0.4rem; 
   cursor: pointer;
+}
+
+.results-container p {
+  font-size: 1.5rem;
 }

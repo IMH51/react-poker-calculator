@@ -1,13 +1,11 @@
 import { CardGroup, OddsCalculator } from 'poker-odds-calculator';
 
-export default () => {
-  const player1Cards = CardGroup.fromString('JhJs');
-  const player2Cards = CardGroup.fromString('JdQd');
-  const board = CardGroup.fromString('7d9dTs');
+export default (player1, player2, table) => {
+  const player1Cards = CardGroup.fromString(player1);
+  const player2Cards = CardGroup.fromString(player2);
+  const board = CardGroup.fromString(table);
 
   const result = OddsCalculator.calculate([player1Cards, player2Cards], board);
 
-  return [`Player #1 - ${player1Cards} - ${result.equities[0].getEquity()}%`,
-          `Player #2 - ${player2Cards} - ${result.equities[1].getEquity()}%`,
-          `Table Cards - ${board}`]
+  return {player1: result.equities[0].getEquity(), player2: result.equities[1].getEquity()}
 }

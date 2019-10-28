@@ -4,17 +4,23 @@ import Header from "./components/Header"
 import CardInstructions from "./components/CardInstructions"
 import CommunalContainer from "./containers/CommunalContainer"
 import TableContainer from "./containers/TableContainer"
+import OddsCalculator from "./components/OddsCalculator"
 import cards from "./helpers/cardData"
+import calculateOdds from "./helpers/pokerCalculator"
+
+const initialState = {
+  "Player 1":[],
+  "Player 2": [],
+  "Table": [],
+  selected: "Player 1",
+  limit: 2,
+  odds1: null,
+  odds2: null
+}
 
 class App extends Component {
 
-  state = {
-    "Player 1":[],
-    "Player 2": [],
-    "Table": [],
-    selected: "Player 1",
-    limit: 2
-  }
+  state = initialState
 
   availableCards = () => {
     return cards.filter(card => {
@@ -38,9 +44,29 @@ class App extends Component {
 
   setSelected = area => this.setState({ selected: area, limit: area === "Table" ? 3 : 2 })
 
+  getString = cards => cards.map(card => card.code).join("")
+
+  getOdds = () => {
+    return calculateOdds(
+    this.getString(this.state["Player 1"]), 
+    this.getString(this.state["Player 2"]), 
+    this.getString(this.state["Table"])
+    )
+  }
+
+  fullCards = () => this.state["Player 1"].length + this.state["Player 2"].length + this.state["Table"].length === 7
+
+  getAndShowOdds = () => {
+      let odds = this.getOdds()
+      this.setState({ odds1: odds.player1, odds2: odds.player2 })
+  }
+
+  resetTable = () => this.setState(initialState)
+
   render() {
     const communalCards = this.availableCards()
     const areas = Object.keys(this.state).slice(0,3)
+    const enable = this.fullCards()
     return (
       <div>
         <Header />
@@ -51,7 +77,7 @@ class App extends Component {
           <TableContainer area={areas[2]} cards={this.state[areas[2]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
           <TableContainer area={areas[1]} cards={this.state[areas[1]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
         </div>
-        
+        <OddsCalculator enable={enable} getAndShowOdds={this.getAndShowOdds} resetTable={this.resetTable} odds1={this.state.odds1} odds2={this.state.odds2} />
       </div>
     );
   }
