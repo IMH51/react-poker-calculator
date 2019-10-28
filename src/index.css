@@ -26,28 +26,32 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  margin: 1.5rem 0;
+}
+
+.communal-container {
+  margin-top: 0;
+}
+
+.arrow-container {
+  margin: 0 2rem 0rem 2rem;
 }
 
 .results-container {
   width: 40rem;
-  min-height: 4.5rem;
+  min-height: 4rem;
   margin-left: auto;
   margin-right: auto;
   align-content: center;
 }
 
-.odds-container {
-  justify-content: center;
-}
-
 .table-card-containers {
   border: 0.2rem solid;
   border-radius: 1rem;
-  margin: 1rem;
-  padding: 0.5rem;
+  margin: 0 1rem;
   min-height: 10.6rem;
   min-width: 12rem;
-  padding-bottom: 0.3rem;
+  padding: 0.3rem 0.5rem;
 }
 
 .table-card-containers:nth-child(2) {
@@ -68,7 +72,7 @@ button {
 }
 
 button.selected-button {
-  color: black;
+  color: rgb(43, 83, 54);
   background: white;  
 }
 
@@ -84,5 +88,34 @@ button.disable {
 }
 
 .results-container p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+}
+
+p.arrow {
+  display: flex;
+  flex-direction: column;
+  margin-top: -4rem;
+}
+
+.arrow-img {
+  width: auto;
+  height: 2rem;
+  margin-bottom: 0;
+}
+
+p.hidden {
+  display: none;
+}
+
+p.right {
+  float: right;
+}
+
+p.left {
+  float: left;
+}
+
+.scroll-container {
+  display: flex;
+  flex-direction: column;
 }

@@ -9,13 +9,14 @@ import cards from "./helpers/cardData"
 import calculateOdds from "./helpers/pokerCalculator"
 
 const initialState = {
-  "Player 1":[],
+  "Player 1": [],
   "Player 2": [],
   "Table": [],
   selected: "Player 1",
   limit: 2,
   odds1: null,
-  odds2: null
+  odds2: null,
+  tie: null,
 }
 
 class App extends Component {
@@ -58,7 +59,7 @@ class App extends Component {
 
   getAndShowOdds = () => {
       let odds = this.getOdds()
-      this.setState({ odds1: odds.player1, odds2: odds.player2 })
+      this.setState({ odds1: odds.player1, odds2: odds.player2, tie: odds.tie })
   }
 
   resetTable = () => this.setState(initialState)
@@ -77,7 +78,7 @@ class App extends Component {
           <TableContainer area={areas[2]} cards={this.state[areas[2]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
           <TableContainer area={areas[1]} cards={this.state[areas[1]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
         </div>
-        <OddsCalculator enable={enable} getAndShowOdds={this.getAndShowOdds} resetTable={this.resetTable} odds1={this.state.odds1} odds2={this.state.odds2} />
+        <OddsCalculator enable={enable} getAndShowOdds={this.getAndShowOdds} resetTable={this.resetTable} odds1={this.state.odds1} odds2={this.state.odds2} tie={this.state.tie} />
       </div>
     );
   }

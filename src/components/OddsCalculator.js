@@ -18,6 +18,7 @@ const OddsCalculator = props => {
           <>
           <p>Player 1 Win: {props.odds1}%</p>
           <p>Player 2 Win: {props.odds2}%</p>
+          <p>Split Pot: {props.tie}%</p>
           </>
         ) : (
           <p>Results will appear here...</p>
