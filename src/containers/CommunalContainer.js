@@ -9,13 +9,14 @@ class CommunalContainer extends Component{
   }
 
   handleScroll = e => {
-    let cardWidth = (e.target.scrollWidth - e.target.offsetWidth) / (e.target.childElementCount * 2)
+    let divWidth = e.target.scrollWidth - e.target.offsetWidth
+    let cardWidth = divWidth / (e.target.childElementCount * 2)
     if (e.target.scrollLeft >= cardWidth) {
       this.setState({ leftClass: true})
     } else {
       this.state.leftClass && this.setState({ leftClass: false })
     }
-    if (e.target.scrollLeft >= e.target.scrollWidth - e.target.offsetWidth - cardWidth) {
+    if (e.target.scrollLeft >= divWidth - cardWidth) {
       this.setState({ rightClass: false})
     } else {
       !this.state.rightClass && this.setState({ rightClass: true})
