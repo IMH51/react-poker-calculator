@@ -9,16 +9,16 @@ class CommunalContainer extends Component{
   }
 
   handleScroll = e => {
-    let cardWidth = e.target.scrollWidth / (e.target.childElementCount * 2)
+    let cardWidth = (e.target.scrollWidth - e.target.offsetWidth) / (e.target.childElementCount * 2)
     if (e.target.scrollLeft >= cardWidth) {
       this.setState({ leftClass: true})
     } else {
-      this.setState({ leftClass: false })
+      this.state.leftClass && this.setState({ leftClass: false })
     }
     if (e.target.scrollLeft >= e.target.scrollWidth - e.target.offsetWidth - cardWidth) {
       this.setState({ rightClass: false})
     } else {
-      this.setState({ rightClass: true})
+      !this.state.rightClass && this.setState({ rightClass: true})
     }
   }
 
@@ -34,7 +34,7 @@ class CommunalContainer extends Component{
           <p className={`${rightShow} right arrow`}>Scroll<img className="arrow-img" alt="right arrow" src='/imgs/arrow-right.png'></img></p>
         </div>
         <div onScroll={this.handleScroll} className="communal-container">
-          {this.props.cards.map(card => <Card key={card.name} card={card} clickHandler={() => this.props.addCard(card)} />)}
+          {this.props.cards.map(card => <Card disable={this.props.disable} key={card.name} card={card} clickHandler={() => this.props.addCard(card)} />)}
         </div>
       </div>
     )

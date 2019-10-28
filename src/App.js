@@ -64,19 +64,22 @@ class App extends Component {
 
   resetTable = () => this.setState(initialState)
 
+  disableButtons = () => this.state.odds1 || this.state.odds2 || this.state.tie
+
   render() {
     const communalCards = this.availableCards()
     const areas = Object.keys(this.state).slice(0,3)
     const enable = this.fullCards()
+    const disable = this.disableButtons()
     return (
       <div>
         <Header />
-        <CommunalContainer cards={communalCards} addCard={this.addCard}/>
+        <CommunalContainer disable={disable} cards={communalCards} addCard={this.addCard}/>
         <CardInstructions selected={this.state.selected} />
         <div className="table-containers" >
-          <TableContainer area={areas[0]} cards={this.state[areas[0]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
-          <TableContainer area={areas[2]} cards={this.state[areas[2]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
-          <TableContainer area={areas[1]} cards={this.state[areas[1]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
+          <TableContainer disable={disable} area={areas[0]} cards={this.state[areas[0]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
+          <TableContainer disable={disable} area={areas[2]} cards={this.state[areas[2]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
+          <TableContainer disable={disable} area={areas[1]} cards={this.state[areas[1]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
         </div>
         <OddsCalculator enable={enable} getAndShowOdds={this.getAndShowOdds} resetTable={this.resetTable} odds1={this.state.odds1} odds2={this.state.odds2} tie={this.state.tie} />
       </div>

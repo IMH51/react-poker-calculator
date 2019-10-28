@@ -49,7 +49,7 @@ body {
   border: 0.2rem solid;
   border-radius: 1rem;
   margin: 0 1rem;
-  min-height: 10.6rem;
+  min-height: 10.8rem;
   min-width: 12rem;
   padding: 0.3rem 0.5rem;
 }
@@ -62,7 +62,7 @@ button {
   color: white;
   font-size: 0.8rem;
   background: none;
-  border: 0.1rem solid white;
+  border: 0.2rem solid white;
   border-radius: 1rem;
   padding: 0.3rem;
   margin: 0.3rem;

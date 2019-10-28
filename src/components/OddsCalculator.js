@@ -1,7 +1,7 @@
 import React from 'react'
 
 const OddsCalculator = props => {
-  const odds = props.odds1 && props.odds2
+  let odds = props.odds1 || props.odds2 || props.tie
   const handleClick = odds ? props.resetTable : props.getAndShowOdds
   const buttonText = odds ? "Reset Table" : "Calculate Odds" 
   const buttonClass = props.enable ? "selected-button" : "disable"

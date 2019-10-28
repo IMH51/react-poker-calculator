@@ -10,5 +10,5 @@ export default (p1, p2, table) => {
   const player2 = result.equities[1].getEquity()
   const tie = 100 - player1 - player2
 
-  return {player1, player2, tie}
+  return { player1, player2, tie }
 }
