@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from "./components/Header"
+import CardInstructions from "./components/CardInstructions"
 import CommunalContainer from "./containers/CommunalContainer"
 import TableContainer from "./containers/TableContainer"
 import cards from "./helpers/cardData"
@@ -39,16 +40,18 @@ class App extends Component {
 
   render() {
     const communalCards = this.availableCards()
-    const areas = Object.keys(this.state)
+    const areas = Object.keys(this.state).slice(0,3)
     return (
       <div>
         <Header />
         <CommunalContainer cards={communalCards} addCard={this.addCard}/>
+        <CardInstructions selected={this.state.selected} />
         <div className="table-containers" >
-          <TableContainer area={areas[0]} cards={this.state["Player 1"]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
-          <TableContainer area={areas[2]} cards={this.state["Table"]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
-          <TableContainer area={areas[1]} cards={this.state["Player 2"]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
+          <TableContainer area={areas[0]} cards={this.state[areas[0]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
+          <TableContainer area={areas[2]} cards={this.state[areas[2]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
+          <TableContainer area={areas[1]} cards={this.state[areas[1]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
         </div>
+        
       </div>
     );
   }

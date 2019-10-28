@@ -5,7 +5,10 @@ body {
   margin: 0;
   color: #fff;
   font-family: 'Lato', sans-serif;
-  text-align: center
+  text-align: center;
+  justify-content: center;
+  min-width: 850px;
+
 }
 
 .communal-container {
@@ -16,7 +19,7 @@ body {
   margin: 1rem;
   overflow: auto;
   white-space: nowrap;
-  min-width: 80rem;
+  max-width: 88rem;
   min-height: 8rem;
 }
 
@@ -31,7 +34,7 @@ body {
   border-radius: 1rem;
   margin: 1rem;
   padding: 0.5rem;
-  min-height: 10.5rem;
+  min-height: 10.6rem;
   min-width: 12rem;
   padding-bottom: 0.3rem;
 }
@@ -41,12 +44,20 @@ body {
 }
 
 .table-card-containers button {
+  color: white;
   font-size: 0.8rem;
-  border: 0.1rem solid;
+  background: none;
+  border: 0.1rem solid white;
   border-radius: 1rem;
   padding: 0.3rem;
   margin: 0.3rem;
   min-width: 12rem;
+  outline: none;
+  cursor: pointer;
+}
+
+button.selected-button {
+  background: rgba(131, 131, 131, 0.5)
 }
 
 .small-card {

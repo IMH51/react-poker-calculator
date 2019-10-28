@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from "../components/Card"
-import Button from "../components/Button"
+import AreaButton from "../components/AreaButton"
 
 const TableContainer = props => {
 
@@ -8,7 +8,7 @@ const TableContainer = props => {
 
   return (
     <div className={`table-card-containers ${selected}`}>
-      <Button selected={props.selected} area={props.area} setSelected={props.setSelected}/>
+      <AreaButton selected={props.selected} area={props.area} handleClick={() => props.setSelected(props.area)}/>
       <div >
         {props.cards.map(card => <Card key={card.name} card={card} area={props.area} clickHandler={() => props.removeCard(card, props.area)}/>)}
       </div>
