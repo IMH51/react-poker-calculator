@@ -55,7 +55,7 @@ class App extends Component {
     )
   }
 
-  fullCards = () => this.state["Player 1"].length + this.state["Player 2"].length + this.state["Table"].length === 7
+  enableCalcButton = () => this.state["Player 1"].length + this.state["Player 2"].length + this.state["Table"].length === 7
 
   getAndShowOdds = () => {
       let odds = this.getOdds()
@@ -64,13 +64,13 @@ class App extends Component {
 
   resetTable = () => this.setState(initialState)
 
-  disableButtons = () => this.state.odds1 || this.state.odds2 || this.state.tie
+  disableApp = () => this.state.odds1 || this.state.odds2 || this.state.tie
 
   render() {
     const communalCards = this.availableCards()
     const areas = Object.keys(this.state).slice(0,3)
-    const enable = this.fullCards()
-    const disable = this.disableButtons()
+    const enable = this.enableCalcButton()
+    const disable = this.disableApp()
     return (
       <div>
         <Header />
