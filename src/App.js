@@ -7,81 +7,72 @@ import TableContainer from "./containers/TableContainer"
 import OddsCalculator from "./components/OddsCalculator"
 import cards from "./helpers/cardData"
 import calculateOdds from "./helpers/pokerCalculator"
+import { areas, areaKeys } from "./helpers/areaData"
 
 const initialState = {
-  "Player 1": [],
-  "Player 2": [],
-  "Table": [],
-  selected: "Player 1",
-  limit: 2,
-  odds1: null,
-  odds2: null,
-  tie: null,
+  cards,
+  ...areas,
+  selectedArea: areaKeys[0],
+  odds: null
 }
 
 class App extends Component {
 
   state = initialState
 
-  availableCards = () => {
-    return cards.filter(card => {
-      return !this.state["Player 1"].includes(card) 
-      && !this.state["Player 2"].includes(card)
-      && !this.state["Table"].includes(card)
-    })
-  }
+  selectedCards = () => [ ...areaKeys.map(areaName => this.state[areaName].cards) ]
+
+  availableCards = () => this.state.cards.filter(card => !this.selectedCards().flat().includes(card))
 
   addCard = selectedCard => {
-    if (this.state[this.state.selected].length < this.state.limit) {
-      this.setState({ [this.state.selected]: [...this.state[this.state.selected], selectedCard ]})
+    let currentArea = this.state[this.state.selectedArea]
+    if (currentArea.cards.length < currentArea.limit) {
+      this.setState({ [this.state.selectedArea]: {
+        ...currentArea,
+        cards: [...currentArea.cards, selectedCard ]}
+      })
     } else {
       alert("You can't add any more cards to this area!")
     }
   }
 
-  removeCard = (selectedCard, area) => {
-    this.setState({ [area]: this.state[area].filter(card => card !== selectedCard)})
+  removeCard = (selectedCard, areaName) => {
+    let currentArea = this.state[areaName]
+    this.setState({ [areaName]: {
+      ...currentArea,
+      cards: currentArea.cards.filter(card => card !== selectedCard)}
+    })
   }
 
-  setSelected = area => this.setState({ selected: area, limit: area === "Table" ? 3 : 2 })
+  setSelected = selectedArea => this.setState({ selectedArea })
 
-  getString = cards => cards.map(card => card.code).join("")
-
-  getOdds = () => {
-    return calculateOdds(
-    this.getString(this.state["Player 1"]), 
-    this.getString(this.state["Player 2"]), 
-    this.getString(this.state["Table"])
-    )
-  }
-
-  enableCalcButton = () => this.state["Player 1"].length + this.state["Player 2"].length + this.state["Table"].length === 7
+  enableCalcButton = () => this.selectedCards().flat().length === 7
 
   getAndShowOdds = () => {
-      let odds = this.getOdds()
-      this.setState({ odds1: odds.player1, odds2: odds.player2, tie: odds.tie })
+    const odds = calculateOdds(...this.selectedCards())
+    this.setState({ odds })
   }
 
   resetTable = () => this.setState(initialState)
 
-  disableApp = () => this.state.odds1 || this.state.odds2 || this.state.tie
+  disableApp = () => !!this.state.odds
 
   render() {
     const communalCards = this.availableCards()
-    const areas = Object.keys(this.state).slice(0,3)
     const enable = this.enableCalcButton()
     const disable = this.disableApp()
+    const { addCard, removeCard, setSelected, getAndShowOdds, resetTable } = this
+    const { selectedArea, odds } = this.state
+    const tableProps = {disable, removeCard, setSelected, selectedArea}
     return (
       <div>
         <Header />
-        <CommunalContainer disable={disable} cards={communalCards} addCard={this.addCard}/>
-        <CardInstructions selected={this.state.selected} />
+        <CommunalContainer {...{communalCards, disable, addCard}}/>
+        <CardInstructions {...{selectedArea}} />
         <div className="table-containers" >
-          <TableContainer disable={disable} area={areas[0]} cards={this.state[areas[0]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
-          <TableContainer disable={disable} area={areas[2]} cards={this.state[areas[2]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
-          <TableContainer disable={disable} area={areas[1]} cards={this.state[areas[1]]} removeCard={this.removeCard} setSelected={this.setSelected} selected={this.state.selected}/>
+          {areaKeys.map(areaName => <TableContainer key={areaName} cards={this.state[areaName].cards} {...{areaName, ...tableProps}} />)}
         </div>
-        <OddsCalculator enable={enable} getAndShowOdds={this.getAndShowOdds} resetTable={this.resetTable} odds1={this.state.odds1} odds2={this.state.odds2} tie={this.state.tie} />
+        <OddsCalculator {...{enable, getAndShowOdds, resetTable, odds}} />
       </div>
     );
   }
