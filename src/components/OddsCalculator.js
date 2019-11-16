@@ -1,10 +1,9 @@
 import React from 'react'
 
-const OddsCalculator = props => {
-  let odds = props.odds1 || props.odds2 || props.tie
-  const handleClick = odds ? props.resetTable : props.getAndShowOdds
+const OddsCalculator = ({ odds, enable, resetTable, getAndShowOdds}) => {
+  const handleClick = odds ? resetTable : getAndShowOdds
   const buttonText = odds ? "Reset Table" : "Calculate Odds" 
-  const buttonClass = props.enable ? "selected-button" : "disable"
+  const buttonClass = enable ? "selected-button" : "disable"
   return (
     <div className="odds-container">
       { odds ? (
@@ -12,13 +11,13 @@ const OddsCalculator = props => {
       ) : (
         <p>Once you have selected enough cards, click Calculate to see who has the better chance of winning the hand!</p>
       )}
-      <button className={buttonClass} disabled={!props.enable} onClick={handleClick}>{buttonText}</button>
+      <button className={buttonClass} disabled={!enable} onClick={handleClick}>{buttonText}</button>
       <div className="results-container">
         {odds ? (
           <>
-          <p>Player 1 Win: {props.odds1}%</p>
-          <p>Player 2 Win: {props.odds2}%</p>
-          <p>Split Pot: {props.tie}%</p>
+          <p>Player 1 Win: {odds.odds1}%</p>
+          <p>Player 2 Win: {odds.odds2}%</p>
+          <p>Split Pot: {odds.tie}%</p>
           </>
         ) : (
           <p>Results will appear here...</p>
