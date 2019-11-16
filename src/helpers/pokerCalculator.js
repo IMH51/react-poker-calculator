@@ -1,14 +1,15 @@
 import { CardGroup, OddsCalculator } from 'poker-odds-calculator';
 
-export default (p1, p2, table) => {
-  const player1Cards = CardGroup.fromString(p1);
-  const player2Cards = CardGroup.fromString(p2);
-  const board = CardGroup.fromString(table);
+const getString = cards => cards.map(card => card.code).join("")
 
-  const result = OddsCalculator.calculate([player1Cards, player2Cards], board);
-  const player1 = result.equities[0].getEquity()
-  const player2 = result.equities[1].getEquity()
-  const tie = 100 - player1 - player2
+const getGroup = cards => CardGroup.fromString(getString(cards))
 
-  return { player1, player2, tie }
+const calculateOdds = (p1, table, p2) => {
+  const result = OddsCalculator.calculate([getGroup(p1), getGroup(p2)], getGroup(table))
+  const odds1 = result.equities[0].getEquity()
+  const odds2 = result.equities[1].getEquity()
+  const tie = 100 - odds1 - odds2
+  return { odds1, odds2, tie }
 }
+
+export default calculateOdds
