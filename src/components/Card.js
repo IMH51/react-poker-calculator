@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Card = props => {
-  const clickFunction = props.disable ? null : props.clickHandler
+const Card = ({ card: { name, code}, disable, clickHandler}) => {
+  const clickFunction = disable ? undefined : clickHandler
   return (
-  <img src={`/imgs/cards/${props.card.code}.png`} alt={props.card.name} className={"small-card"} onClick={clickFunction} />
+  <img className="small-card" src={`/imgs/cards/${code}.png`} alt={name} onClick={clickFunction} />
   )
 }
 
