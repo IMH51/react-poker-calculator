@@ -1,7 +1,7 @@
 const areas = {
     player1: {name: "Player 1", cards: [], limit: 2},
     table: {name: "Table", cards: [], limit: 3},
-    player2: {name: "Player 1", cards: [], limit: 2}
+    player2: {name: "Player 2", cards: [], limit: 2}
   }
   
 const areaKeys = Object.keys(areas)
