@@ -1,8 +1,8 @@
 import React from 'react'
-import { getAreaName } from "../helpers/areaData"
+import { getAreaString } from "../helpers/areaData"
 
 const CardInstructions = ({ selectedArea }) => {
-  const name = getAreaName(selectedArea)
+  const name = getAreaString(selectedArea)
   return (
   <>
     <p>Click on a card above to add it to the {name} area. To add one to a different area, select it using the buttons below.</p>

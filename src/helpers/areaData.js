@@ -6,6 +6,6 @@ const areas = {
   
 const areaKeys = Object.keys(areas)
 
-const getAreaName = name => `${name[0].toUpperCase()}${name.slice(1,6)} ${name[6] || ""}`
+const getAreaString = name => `${name[0].toUpperCase()}${name.slice(1,6)} ${name[6] || ""}`
 
-export { areas, areaKeys, getAreaName }
+export { areas, areaKeys, getAreaString }
