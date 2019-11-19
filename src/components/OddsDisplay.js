@@ -1,6 +1,6 @@
 import React from 'react'
 
-const OddsCalculator = ({ odds, enable, resetTable, getAndShowOdds}) => {
+const OddsDisplay = ({ odds, enable, resetTable, getAndShowOdds}) => {
   const handleClick = odds ? resetTable : getAndShowOdds
   const buttonText = odds ? "Reset Table" : "Calculate Odds" 
   const buttonClass = enable ? "selected-button" : "disable"
@@ -27,4 +27,4 @@ const OddsCalculator = ({ odds, enable, resetTable, getAndShowOdds}) => {
   )
 }
 
-export default OddsCalculator
+export default OddsDisplay

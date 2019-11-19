@@ -4,7 +4,7 @@ import Header from "./components/Header"
 import CardInstructions from "./components/CardInstructions"
 import CommunalContainer from "./containers/CommunalContainer"
 import TableContainer from "./containers/TableContainer"
-import OddsCalculator from "./components/OddsCalculator"
+import OddsDisplay from "./components/OddsDisplay"
 import cards from "./helpers/cardData"
 import calculateOdds from "./helpers/pokerCalculator"
 import { areas, areaKeys } from "./helpers/areaData"
@@ -87,7 +87,7 @@ class App extends Component {
         <div className="table-containers" >
           {tableAreas}
         </div>
-        <OddsCalculator {...{enable, getAndShowOdds, resetTable, odds}} />
+        <OddsDisplay {...{enable, getAndShowOdds, resetTable, odds}} />
       </div>
     );
   }
