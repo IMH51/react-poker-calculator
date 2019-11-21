@@ -57,10 +57,12 @@ class App extends Component {
 
   disableApp = () => !!this.state.odds
 
-  renderTableAreas = (keys, props) => keys.map(key => {
+  renderTableAreas = (keys, props = {}) => {
+    return keys.map(key => {
       const { cards, areaName } = this.state[key]
       return <TableContainer areaKey={key} {...{ key, cards, areaName, ...props}} />
     })
+  }
 
   render() {
     const { addCard, 
