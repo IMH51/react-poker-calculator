@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/react-poker-calculator/precache-manifest.b6de9589b8f6531d6f04feaab5469395.js"
+  "/react-poker-calculator/precache-manifest.327d0e026c903af982ff12acf2807b7d.js"
 );
 
 self.addEventListener('message', (event) => {
