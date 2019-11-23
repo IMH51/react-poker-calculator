@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-poker-calculator/static/css/main.d8ad1a0c.chunk.css",
-    "main.js": "/react-poker-calculator/static/js/main.9f47163c.chunk.js",
-    "main.js.map": "/react-poker-calculator/static/js/main.9f47163c.chunk.js.map",
+    "main.js": "/react-poker-calculator/static/js/main.44a9b097.chunk.js",
+    "main.js.map": "/react-poker-calculator/static/js/main.44a9b097.chunk.js.map",
     "runtime-main.js": "/react-poker-calculator/static/js/runtime-main.67286e3d.js",
     "runtime-main.js.map": "/react-poker-calculator/static/js/runtime-main.67286e3d.js.map",
     "static/js/2.4cd01eb8.chunk.js": "/react-poker-calculator/static/js/2.4cd01eb8.chunk.js",
     "static/js/2.4cd01eb8.chunk.js.map": "/react-poker-calculator/static/js/2.4cd01eb8.chunk.js.map",
     "index.html": "/react-poker-calculator/index.html",
-    "precache-manifest.3f48e00690eb27f9a519109089fbfd13.js": "/react-poker-calculator/precache-manifest.3f48e00690eb27f9a519109089fbfd13.js",
+    "precache-manifest.6594a8b8682c62e117e119475d777cdb.js": "/react-poker-calculator/precache-manifest.6594a8b8682c62e117e119475d777cdb.js",
     "service-worker.js": "/react-poker-calculator/service-worker.js",
     "static/css/main.d8ad1a0c.chunk.css.map": "/react-poker-calculator/static/css/main.d8ad1a0c.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.67286e3d.js",
     "static/js/2.4cd01eb8.chunk.js",
     "static/css/main.d8ad1a0c.chunk.css",
-    "static/js/main.9f47163c.chunk.js"
+    "static/js/main.44a9b097.chunk.js"
   ]
 }
