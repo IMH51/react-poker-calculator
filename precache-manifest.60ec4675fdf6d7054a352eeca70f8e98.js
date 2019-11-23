@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "41afda703486784da21eaa06e7246d5a",
+    "revision": "90b76deb29091561016eff4e066f06ae",
     "url": "/react-poker-calculator/index.html"
   },
   {
-    "revision": "6ae4a4112f34620aa00f",
-    "url": "/react-poker-calculator/static/css/main.d8ad1a0c.chunk.css"
+    "revision": "b79cbbb8d0385c981eed",
+    "url": "/react-poker-calculator/static/css/main.dd39265b.chunk.css"
   },
   {
     "revision": "c00338d5be220f4b4e2c",
     "url": "/react-poker-calculator/static/js/2.4cd01eb8.chunk.js"
   },
   {
-    "revision": "6ae4a4112f34620aa00f",
+    "revision": "b79cbbb8d0385c981eed",
     "url": "/react-poker-calculator/static/js/main.cc6a23b0.chunk.js"
   },
   {
