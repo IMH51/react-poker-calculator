@@ -11,4 +11,4 @@ Click [here](https://imh51.github.io/react-poker-calculator/) for the live versi
 
 Screenshot:
 
-![Screenshot](poker-odds-calculator.jpg)
+![Screenshot](poker-calculator-screenshot.jpg)
