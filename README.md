@@ -7,7 +7,7 @@ The calculation is based on the two players dealt hands and the first 3 cards to
 
 The 'poker-odds-calculator' npm package was used to handle odds calculation.
 
-Click [here](https://imh51.github.io/react-poker-calculator/) for the live version.
+Click [here](https://imh51.github.io/react-poker-calculator/) to try it out.
 
 Screenshot:
 
