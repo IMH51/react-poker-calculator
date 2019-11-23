@@ -22,8 +22,8 @@ const CommunalContainer = ({communalCards, disable, addCard}) => {
   return (
     <div className="scroll-container">
       <div className="arrow-container">
-        <p className={`${leftClass} left arrow `}>Scroll<img className="arrow-img" alt="right arrow" src='imgs/arrow-right.png'></img></p>
-        <p className={`${rightClass} right arrow`}>Scroll<img className="arrow-img" alt="left arrow" src='imgs/arrow-left.png'></img></p>
+        <p className={`${leftClass} left arrow `}>Scroll<img className="arrow-img" alt="left arrow" src='imgs/arrow-left.png'></img></p>
+        <p className={`${rightClass} right arrow`}>Scroll<img className="arrow-img" alt="right arrow" src='imgs/arrow-right.png'></img></p>
       </div>
       <div onScroll={scrollFunction} className="communal-container">
         {communalCards.map(card => <Card key={card.name} clickHandler={() => addCard(card)} {...{disable, card}} />)}
