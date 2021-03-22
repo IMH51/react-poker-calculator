@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { useState } from "react"
+import "./App.css"
 import Header from "./components/Header"
 import CardInstructions from "./components/CardInstructions"
 import CommunalContainer from "./containers/CommunalContainer"
@@ -13,87 +13,86 @@ const initialState = {
   cards,
   ...areas,
   selectedKey: areaKeys[0],
-  odds: null
+  odds: null,
 }
 
-class App extends Component {
+const App = () => {
+  const [state, setState] = useState(initialState)
 
-  state = initialState
+  const { cards, selectedKey, odds } = state
 
-  selectedCards = () => [ ...areaKeys.map(key => this.state[key].cards) ]
+  const selectedCards = () => [...areaKeys.map(key => state[key].cards)]
 
-  availableCards = () => this.state.cards.filter(card => !this.selectedCards().flat().includes(card))
+  const availableCards = () =>
+    cards.filter(card => !selectedCards().flat().includes(card))
 
-  addCard = selectedCard => {
-    let currentArea = this.state[this.state.selectedKey]
+  const addCard = selectedCard => {
+    let currentArea = state[selectedKey]
     if (currentArea.cards.length < currentArea.limit) {
-      this.setState({ [this.state.selectedKey]: {
-        ...currentArea,
-        cards: [...currentArea.cards, selectedCard ]}
+      return setState({
+        ...state,
+        [selectedKey]: {
+          ...currentArea,
+          cards: [...currentArea.cards, selectedCard],
+        },
       })
-    } else {
-      alert("You can't add any more cards to this area!")
     }
+    alert("You can't add any more cards to this area!")
   }
 
-  removeCard = (selectedCard, areaKey) => {
-    let currentArea = this.state[areaKey]
-    this.setState({ [areaKey]: {
-      ...currentArea,
-      cards: currentArea.cards.filter(card => card !== selectedCard)}
+  const removeCard = (selectedCard, areaKey) => {
+    let currentArea = state[areaKey]
+    setState({
+      ...state,
+      [areaKey]: {
+        ...currentArea,
+        cards: currentArea.cards.filter(card => card !== selectedCard),
+      },
     })
   }
 
-  setSelectedKey = selectedKey => this.setState({ selectedKey })
+  const setSelectedKey = selectedKey => setState({ ...state, selectedKey })
 
-  enableCalcButton = () => this.selectedCards().flat().length === 7
+  const enableCalcButton = () => selectedCards().flat().length === 7
 
-  getAndShowOdds = () => {
-    const odds = calculateOdds(...this.selectedCards())
-    this.setState({ odds })
+  const getAndShowOdds = () => {
+    const odds = calculateOdds(...selectedCards())
+    setState({ ...state, odds })
   }
 
-  resetTable = () => this.setState(initialState)
+  const resetTable = () => setState(initialState)
 
-  disableApp = () => !!this.state.odds
+  const disableApp = () => !!odds
 
-  renderTableAreas = (keys, props = {}) => {
-    return keys.map(key => {
-      const { cards, areaName } = this.state[key]
-      return <TableContainer areaKey={key} {...{ key, cards, areaName, ...props}} />
+  const renderTableAreas = (keys, props = {}) =>
+    keys.map(key => {
+      const { cards, areaName } = state[key]
+      return (
+        <TableContainer areaKey={key} {...{ key, cards, areaName, ...props }} />
+      )
     })
-  }
 
-  render() {
-    const { addCard, 
-            removeCard, 
-            setSelectedKey, 
-            getAndShowOdds, 
-            resetTable, 
-            renderTableAreas, 
-            disableApp, 
-            enableCalcButton, 
-            availableCards } = this
-    const { selectedKey, odds } = this.state
-    const { areaName } = this.state[selectedKey]
-    const communalCards = availableCards()
-    const enable = enableCalcButton()
-    const disable = disableApp()
-    const tableProps = { disable, removeCard, setSelectedKey, selectedKey }
-    const tableAreas = renderTableAreas(areaKeys, tableProps)
-    return (
-      <div>
-        <Header />
-        <CommunalContainer {...{communalCards, disable, addCard}}/>
-        <CardInstructions {...{areaName}} />
-        <div className="table-containers" >
-          {tableAreas}
-        </div>
-        <OddsDisplay {...{enable, getAndShowOdds, resetTable, odds}} />
+  const { areaName } = state[selectedKey]
+
+  const communalCards = availableCards()
+
+  const enable = enableCalcButton()
+
+  const disable = disableApp()
+
+  const tableProps = { disable, removeCard, setSelectedKey, selectedKey }
+
+  return (
+    <div>
+      <Header />
+      <CommunalContainer {...{ communalCards, disable, addCard }} />
+      <CardInstructions {...{ areaName }} />
+      <div className="table-containers">
+        {renderTableAreas(areaKeys, tableProps)}
       </div>
-    );
-  }
-
+      <OddsDisplay {...{ enable, getAndShowOdds, resetTable, odds }} />
+    </div>
+  )
 }
 
-export default App;
+export default App

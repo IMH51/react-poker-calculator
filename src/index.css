@@ -1,16 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url("https://fonts.googleapis.com/css?family=Lato");
 
 body {
-  background: url('/imgs/background_tile.png') repeat;
+  background: url("/imgs/background_tile.png") repeat;
   margin: 0;
   color: #fff;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   text-align: center;
   justify-content: center;
   min-width: 850px;
 }
 
-.communal-container, .results-container {
+.communal-container,
+.results-container {
   position: relative;
   display: block;
   border: 0.2rem solid;
@@ -22,7 +23,8 @@ body {
   min-height: 8rem;
 }
 
-.table-containers, .results-container {
+.table-containers,
+.results-container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -34,7 +36,7 @@ body {
 }
 
 .arrow-container {
-  margin: 0 2rem 0rem 2rem;
+  margin: 0 2rem;
 }
 
 .results-container {
@@ -73,7 +75,7 @@ button {
 
 button.selected-button {
   color: rgb(43, 83, 54);
-  background: white;  
+  background: white;
 }
 
 button.disable {
@@ -83,7 +85,7 @@ button.disable {
 .small-card {
   width: 5rem;
   height: auto;
-  margin: 0.4rem; 
+  margin: 0.4rem;
   cursor: pointer;
 }
 
@@ -118,4 +120,5 @@ p.left {
 .scroll-container {
   display: flex;
   flex-direction: column;
+  scroll-behavior: smooth;
 }
